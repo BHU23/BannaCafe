@@ -1,47 +1,28 @@
 
 export const SidebarMemberData = [
   {
-    title: "คำขอจัดกิจกรรม",
-    path: "/approveEvent",
+    title: "กาแฟ",
+    path: "/coffee",
     cName: "side-text",
   },
   {
-    title: "คำขอจัดใช้สถานที่",
-    path: "/reports",
+    title: "ชาและนม",
+    path: "/tea&milk",
     cName: "side-text",
   },
   {
-    title: "คำขอยืม/คืนสิ่งของ",
-    path: "/products",
+    title: "ผลไม้",
+    path: "/fruit",
     cName: "side-text",
   },
   {
-    title: "ข้อมูลการบริจาค",
-    path: "/receiveDonate",
-    cName: "side-text",
-  },
-];
-
-export const SidebarData2 = [
-  {
-    title: "ข้อมูลทั่วไป",
-    path: "/CreatorGeneral",
+    title: "ของทานเล่น",
+    path: "/cake&Snacks",
     cName: "side-text",
   },
   {
-    title: "ข้อมูลพระสงฆ์",
-    path: "/CreatorMonk",
+    title: "สำเร็จรูป",
+    path: "/delicatessen",
     cName: "side-text",
   },
-  {
-    title: "ข้อมูลสถานที่",
-    path: "/CreatorPlace",
-    cName: "side-text",
-  },
-  {
-    title: "ข้อมูลสิ่งของ",
-    path: "/CreatorItem",
-    cName: "side-text",
-  },
- 
 ];

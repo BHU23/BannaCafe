@@ -1,26 +1,23 @@
-import React from "react";
+import { useState } from "react";
 import "./home.css";
 import NavbarHome from "../../../components/navbarHome";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faXTwitter,
-  faInstagram,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
+import Login from "../login";
+import Footer from "../../../components/footer";
+
 export default function Home() {
+  const [login, setLogin] = useState(false)
   return (
     <div>
       <div className="slide s1">
-        <NavbarHome />
-        <div className="content s1">
-          <div className="circle c1">
-            <Link to={"/login"} className="circle c2">
+        <NavbarHome onOpen={() => setLogin(true)}/>
+        <div className={`${!login ? "content c1" : "content0"}`} >
+          <div className="circle c1" onClick={() => setLogin(true)}>
+            <div className="circle c2">
               <span>banna</span>
               <br />
               <p>click here</p>
-            </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -111,48 +108,10 @@ export default function Home() {
         </div>
       </div>
       <div className="slide s6">
-        <div className="content s6 left">
-          <span>BANNA</span>
-          <div className="img-logo"></div>
-        </div>
-        <div className="content s6 mid">
-          <span>CONTACT</span>
-          <div className="text-s6">
-            <p>
-              111/3, Surawithee 1, Suranaree
-              <br />
-              Mueang Nakhon Ratchasiima,
-              <br />
-              Nakho Ratchasiima, 30000
-            </p>
-            <p>
-              <strong>EMAIL</strong> : SE_T08@sut.ac.th
-            </p>
-            <p>
-              <strong>TEL.</strong> :0433333333
-            </p>
-            <div className="icon-s6">
-              <a href="https://github.com/BHU23">
-                <FontAwesomeIcon icon={faFacebook} className="icon" />
-              </a>
-              <a href="https://github.com/BHU23">
-                <FontAwesomeIcon icon={faXTwitter} className="icon" />
-              </a>
-              <a href="https://github.com/BHU23">
-                <FontAwesomeIcon icon={faInstagram} className="icon" />
-              </a>
-              <a href="https://github.com/BHU23">
-                <FontAwesomeIcon icon={faGithub} className="icon" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="content s6 right">
-          <span>LOCATION</span>
-          <div className="text-s6">
-             <Link to={"/menuPreOrder"}><div className="img-map"></div></Link>
-          </div>
-        </div>
+        <Footer/>
+      </div >
+      <div className={`${login ? "loginRegisteractive" : "loginRegister"}`}>
+        {login && <Login onClose={() => setLogin(false)} />}
       </div>
     </div>
   );

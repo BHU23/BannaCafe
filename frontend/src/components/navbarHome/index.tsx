@@ -2,7 +2,10 @@ import React from 'react'
 import { NavLink, } from "react-router-dom";
 import { NavbarHomeData } from './data';
 import "./navbarHome.css";
-export default function NavbarHome() {
+interface NavbatProps {
+  onOpen: () => void;
+}
+const NavbarHome: React.FC<NavbatProps> = ({ onOpen }) => {
   return (
     <nav className={'nav-home'}>
       <ul className='nav-home-items'>
@@ -15,7 +18,11 @@ export default function NavbarHome() {
             </li>
           );
         })}
+        <li className="nav-text" onClick={onOpen}>
+          <NavLink to={"#"}><span>Login</span></NavLink>
+        </li>
       </ul>
     </nav>
   )
 }
+export default NavbarHome;

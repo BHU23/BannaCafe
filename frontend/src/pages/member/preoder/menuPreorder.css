@@ -1,9 +1,0 @@
-.menuPreorder{
-    display: flex;
-    flex-direction: row;
-}
-.sidebarMemu{
-    width: 7vw;
-    height: 100vh;
-    background-color: #678983;
-}

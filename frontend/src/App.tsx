@@ -15,13 +15,13 @@ import Home from "./pages/home/home";
 import Login from "./pages/home/login";
 
 //Member
-import MenuPreorder from "./pages/member/preoder";
+import MenuPreorder from "./pages/member/preOrder";
+import ProfileMember from "./pages/member/profile";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="" element={<HomeLayout />}>
         <Route index element={<Home />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/menuPreorder" element={<MenuPreorder />} />
       </Route>
 
@@ -33,6 +33,7 @@ const router = createBrowserRouter(
       
       <Route path="" element={<MemberLayout />}>
         <Route path="/menuPreorder" element={<MenuPreorder />} />
+        <Route path="/profileMember" element={<ProfileMember />} />
       </Route>
     </>
   )

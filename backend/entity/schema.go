@@ -1,80 +1,120 @@
 package entity
 
 import (
+	"time"
+
 	"gorm.io/gorm"
 )
 
 type Member struct {
 	gorm.Model
-	Name 	  string
-	Email     string
-	Phone     string
-	Profile   string `gorm:"type:longtext"`
-	Point     int64
+	Name        string `gorm:"uniqueIndex"`
+	Email       string `gorm:"uniqueIndex"`
+	Password    string
+	Phone       string
+	MemberImage string `gorm:"type:longtext"`
+	Point       int64
 
-	PreOrders []PreOrder `gorm:"foreignKey:MemberID"`
+	PreOrders []Preorder `gorm:"foreignKey:MemberID"`
 }
 
-type PreOrder struct {
+type Preorder struct {
 	gorm.Model
-	Name 	  		string
-	Total_amount    int64
-	PickUpTime      string
-	Discount		int64
+	TotalAmount int64
+	CreateTime  time.Time
+	PickUpTime  time.Time
+	PickUpDate  time.Time
+	Note        string
+	Respound    string
 
-	// MemberID ทำหน้าที่เป็น FK
+	// FK
 	MemberID *uint
 	Member   Member `gorm:"references:id"`
 
-	// StatusID ทำหน้าที่เป็น FK
-	StatusID *uint
-	Status   Status `gorm:"references:id"`
-
-	PreOrderMenus []PreOrderMenu `gorm:"foreignKey:PreOrderID"`
+	StatusApprovePreorders []StatusApprovePreorders `gorm:"foreignKey:PreorderID"`
+	StatusRecivePreorders  []StatusRecivePreorders `gorm:"foreignKey:PreorderID"`
+	PreorderMenus          []PreorderMenu           `gorm:"foreignKey:PreorderID"`
 }
 
-type PreOrderMenu struct {
+type PreorderMenu struct {
 	gorm.Model
-	amount    		int64
-	Size      		string
-	Sweetness      	string
-	Option      	string
-	Note			int64
+	Quantity  int
+	TotalCost float32 `gorm:"type:decimal(7,6);"`
+	Size      string
+	Sweetness string
+	Option    string
 
-	// PreOrderID ทำหน้าที่เป็น FK
-	PreOrderID *uint
-	PreOrder   PreOrder `gorm:"references:id"`
+	// FK
+	PreorderID *uint
+	Preorder   Preorder `gorm:"references:id"`
 
-	
-	// MenuID ทำหน้าที่เป็น FK
+	// FK
 	MenuID *uint
 	Menu   Menu `gorm:"references:id"`
 }
 type Menu struct {
 	gorm.Model
-	NameThai    string
-	nameEng     string
-	cost      	string
-	image		string `gorm:"type:longtext"`
 
-	// MenuID ทำหน้าที่เป็น FK
+	MenuID      int    `gorm:"uniqueIndex"`
+	MenuName    string `gorm:"uniqueIndex"`
+	MenuNameEng string `gorm:"uniqueIndex"`
+	MenuCost    float64
+	MenuImage   string `gorm:"type:longtext"`
+	MenuStatus  int
+
+	PreorderMenus []PreorderMenu `gorm:"foreignKey:MenuID"`
+
+	// FK test
 	MenuTypeID *uint
 	MenuType   MenuType `gorm:"references:id"`
-
-	PreOrderMenus []PreOrderMenu `gorm:"foreignKey:MenuID"`
+	RatingID   *uint
+	Rating     Rating `gorm:"references:id"`
 }
 
 type MenuType struct {
 	gorm.Model
-	Name	    string
+	TypeName string `gorm:"uniqueIndex"`
 
-	Menus []Menu `gorm:"foreignKey:MenuTypeID"`
+	Menu []Menu `gorm:"foreignKey:MenuTypeID"`
+}
+type StatusApprovePreorder struct {
+	gorm.Model
+	Name string
+
+	StatusApprovePreorders []StatusApprovePreorders `gorm:"foreignKey:StatusApprovePreorderID"`
+}
+type StatusApprovePreorders struct {
+	gorm.Model
+
+	// FK
+	PreorderID              *uint
+	Preorder                Preorder `gorm:"references:id"`
+	StatusApprovePreorderID *uint
+	StatusApprovePreorder   StatusApprovePreorder `gorm:"references:id"`
 }
 
-
-type Status struct {
+type StatusRecivePreorder struct {
 	gorm.Model
-	StatusName  string  `gorm:"uniqueIndex"`
+	Name string
 
-	PreOrders []PreOrder `gorm:"foreignKey:StatusID"`	
+	StatusRecrivePreorders []StatusRecivePreorders `gorm:"foreignKey:StatusRecivePreorderID"`
+}
+type StatusRecivePreorders struct {
+	gorm.Model
+	// FK
+	PreorderID              *uint
+	Preorder                Preorder `gorm:"references:id"`
+	StatusRecivePreorderID *uint
+	StatusRecivePreorder   StatusRecivePreorder `gorm:"references:id"`
+}
+
+type Rating struct {
+	gorm.Model
+
+	Score int
+
+	Menu []Menu `gorm:"foreignKey:RatingID"`
+
+	MemberID *uint
+	Member   Member `gorm:"references:id"`
 }

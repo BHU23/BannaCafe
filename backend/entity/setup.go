@@ -19,13 +19,16 @@ func SetupDatabase() {
 	// Migrate the schema
 	database.AutoMigrate(
 		&Member{},
-		&PreOrder{},
-		&PreOrderMenu{},
+		&Preorder{},
+		&PreorderMenu{},
 		&Menu{},
 		&MenuType{},
-		&Status{},
+		&StatusApprovePreorder{},
+		&StatusApprovePreorders{},
+		&StatusRecivePreorder{},
+		&StatusRecivePreorders{},
+		&Rating{},
 	)
 
 	db = database
-
 }
