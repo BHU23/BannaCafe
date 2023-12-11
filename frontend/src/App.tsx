@@ -12,7 +12,6 @@ import MemberLayout from "./layouts/memberLayout";
 
 //Home
 import Home from "./pages/home/home";
-import Login from "./pages/home/login";
 
 //Member
 import MenuPreorder from "./pages/member/preOrder";

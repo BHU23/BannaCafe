@@ -1,12 +1,9 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faXTwitter,
-  faInstagram,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
+import { BsFacebook } from "react-icons/bs";
+import { RiTwitterXLine } from "react-icons/ri";
+import { LuInstagram } from "react-icons/lu";
+import { FaGithub } from "react-icons/fa";
 import './footer.css';
 export default function Footer() {
   return (
@@ -33,16 +30,16 @@ export default function Footer() {
             </p>
             <div className="icon-s6">
               <a href="https://github.com/BHU23">
-                <FontAwesomeIcon icon={faFacebook} className="icon" />
+                <BsFacebook className="icon" />
               </a>
               <a href="https://github.com/BHU23">
-                <FontAwesomeIcon icon={faXTwitter} className="icon" />
+                <RiTwitterXLine className="icon" />
               </a>
               <a href="https://github.com/BHU23">
-                <FontAwesomeIcon icon={faInstagram} className="icon" />
+                <LuInstagram className="icon" />
               </a>
               <a href="https://github.com/BHU23">
-                <FontAwesomeIcon icon={faGithub} className="icon" />
+                <FaGithub className="icon" />
               </a>
             </div>
           </div>

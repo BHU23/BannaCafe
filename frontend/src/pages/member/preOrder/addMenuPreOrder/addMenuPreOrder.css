@@ -9,14 +9,14 @@
     box-shadow: 4px 4px 4px 3px #678983 inset, -4px -4px 4px 3px #678983 inset;
     overflow: hidden;
 }
-.rat-cost{
+.rat-costadd{
     height:3%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 12px 12px 12px;
 }
-.rat-cost .icon-close-addmenu{
+.rat-costadd .icon-close-addmenu{
     width: 25px;
     display: flex;
     justify-content: center;

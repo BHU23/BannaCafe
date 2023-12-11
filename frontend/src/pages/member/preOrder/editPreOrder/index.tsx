@@ -2,11 +2,14 @@ import React from 'react'
 import { IoRestaurantOutline } from "react-icons/io5";
 import "../addMenuPreOrder/addMenuPreOrder.css";
 import "./editPreOrder.css";
-export default function EditMenuPreOrder() {
+interface EditMenuPreOrderProps {
+  onClosebasketMenupop: () => void;
+}
+const EditMenuPreOrder: React.FC<EditMenuPreOrderProps> = ({ onClosebasketMenupop }) =>{
   return (
     <div className="edit-crad">
       <div className="rat-cost">
-        <span className="icon-close-addmenu"><IoRestaurantOutline /></span>
+        <span className="icon-close-addmenu" onClick={onClosebasketMenupop} ><IoRestaurantOutline /></span>
       </div>
       <form className="form-edit">
         <div className="basket-menu">
@@ -34,7 +37,8 @@ export default function EditMenuPreOrder() {
           <h5 className="total-amout-allMenu"><span>รวมราคา</span><p>98.-</p></h5>
         </div>
       </form>
-      <button className="btn-addmenu">ชำระเงิน</button>
+      <button className="btn-addmenu" onClick={onClosebasketMenupop}>ชำระเงิน</button>
     </div>
   )
 }
+export default EditMenuPreOrder;

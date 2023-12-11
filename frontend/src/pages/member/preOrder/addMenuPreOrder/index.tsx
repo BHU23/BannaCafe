@@ -2,12 +2,15 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { IoRestaurantOutline } from "react-icons/io5";
 import "./addMenuPreOrder.css";
-export default function AddmenuPreOrder() {
+interface AddMenuPreOrderProps {
+  onCloseAddmenupop: () => void;
+}
+const AddMenuPreOrder: React.FC<AddMenuPreOrderProps> = ({ onCloseAddmenupop }) =>{
   return (
     <div className="add-crad">
-      <div className="rat-cost">
+      <div className="rat-costadd">
         <div className="addmenu-rating"><FaStar /> <span>4</span></div>
-        <span className="icon-close-addmenu"><IoRestaurantOutline /></span>
+        <span className="icon-close-addmenu" onClick={onCloseAddmenupop}><IoRestaurantOutline /></span>
       </div>
       <form className="form-add">
         <div className="addmenu-imge"></div>
@@ -39,7 +42,8 @@ export default function AddmenuPreOrder() {
         </div></h5>
         <div className="menu-total"><span>ราคา</span><p>49-.</p></div>
       </form>
-      <button className="btn-addmenu">+เพิ่ม</button>
+      <button className="btn-addmenu" onClick={onCloseAddmenupop} >+เพิ่ม</button>
     </div>
   );
 }
+export default AddMenuPreOrder;

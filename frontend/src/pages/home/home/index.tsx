@@ -2,11 +2,14 @@ import { useState } from "react";
 import "./home.css";
 import NavbarHome from "../../../components/navbarHome";
 import { Link } from "react-router-dom";
-import Login from "../login";
+import Login from "../formLoginRegister";
 import Footer from "../../../components/footer";
 
 export default function Home() {
   const [login, setLogin] = useState(false)
+  function handleClick() {
+    setLogin(!login);
+  }
   return (
     <div>
       <div className="slide s1">
@@ -111,7 +114,7 @@ export default function Home() {
         <Footer/>
       </div >
       <div className={`${login ? "loginRegisteractive" : "loginRegister"}`}>
-        {login && <Login onClose={() => setLogin(false)} />}
+        {login && <Login onClose={handleClick} />}
       </div>
     </div>
   );
