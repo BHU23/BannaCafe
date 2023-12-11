@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/BHU23/BannaCafe/entity"
@@ -35,10 +36,12 @@ func Login(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": error})
 		return
 	}
-
-	//check password
-	err := bcrypt.CompareHashAndPassword([]byte(member.Password), []byte(payload.Password))
-	if err == nil {
+	fmt.Print(member.Password)
+	fmt.Print(payload.Password)
+	
+	// Check password
+	err := bcrypt.CompareHashAndPassword([]byte(payload.Password), []byte(member.Password))
+	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "password incorrect"})
 		return
 	}

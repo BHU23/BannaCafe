@@ -11,13 +11,13 @@ func main() {
 	entity.SetupDatabase()
 	r := gin.Default()
 	r.Use(CORSMiddleware())
-	r.POST("/members", controller.CreateMember)
-	// r.POST("/login", controller.Login)
+	r.POST("/members", controller.CreateMemberRegister)
+	r.POST("/login", controller.Login)
 	router := r.Group("")
 	{
 		router.Use(middlewares.Authorizes()) //wtf "s"
 		{
-			r.POST("/login", controller.Login)
+			// r.POST("/login", controller.Login)
 			// r.POST("/login", controller.Login)
 			// User Routes
 			// router.GET("/users", controller.ListUsers)

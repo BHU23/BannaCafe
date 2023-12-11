@@ -109,7 +109,7 @@
 }
 .menu-sweetness input, .menu-option input{
     position: absolute;
-    transform: translateX(380px);
+    transform: translateX(360px);
 }
 .menu-sweetness span{
     color: #678983;
@@ -118,7 +118,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 30px;
+    margin: 5px 0;
     height: 20px;
 }
 .menu-total p{

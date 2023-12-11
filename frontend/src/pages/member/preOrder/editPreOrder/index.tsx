@@ -8,7 +8,7 @@ interface EditMenuPreOrderProps {
 const EditMenuPreOrder: React.FC<EditMenuPreOrderProps> = ({ onClosebasketMenupop }) =>{
   return (
     <div className="edit-crad">
-      <div className="rat-cost">
+      <div className="rat-costEdit">
         <span className="icon-close-addmenu" onClick={onClosebasketMenupop} ><IoRestaurantOutline /></span>
       </div>
       <form className="form-edit">

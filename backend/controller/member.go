@@ -7,8 +7,8 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-// POST /members
-func CreateMember(c *gin.Context) {
+// POST /membersRegister
+func CreateMemberRegister(c *gin.Context) {
 	var member entity.Member
 
 	// bind เข้าตัวแปร member
